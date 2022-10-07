@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,redirect
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from flask import Flask, jsonify, request, abort
@@ -24,7 +24,7 @@ def add_review():
     elif request.method == "GET":
         data = request.args
         gsheet.append_row(list(data.values()))
-        return render_template('index.html')
+        return redirect('https://viveks-codes.github.io/Pratipushti/vishal/index.html',code=302)
         return jsonify({"success": False, "error": "Invalid request method"})
 
 # @app.route('/del_review/<email>', methods=["DELETE"])
